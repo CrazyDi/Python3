@@ -12,7 +12,7 @@ def build_tree(start, end, path):
 
     while files[end] is None:
         for parent in parents:
-            with open(path + parent, 'r+', encoding='utf-8') as f:
+            with open(path + parent, encoding='utf-8') as f:
                 html = f.read()
                 links = re.findall(link_re, html)
                 for link in links:

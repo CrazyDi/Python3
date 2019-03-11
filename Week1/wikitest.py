@@ -14,6 +14,7 @@ count = 0
 max_count = len(correct)
 
 result = parse(start, end, path)
+print(result)
 
 for link, params in result.items():
     if link not in correct:

@@ -4,13 +4,14 @@ register = template.Library()
 
 
 @register.filter(name='inc')
-def inc(value, inc_value):
-    return value + inc_value
+def inc(value, arg):
+    return int(value) + int(arg)
 
 
-@register.inclusion_tag(name='division')
-def division(a, b, to_int=False):
-    if to_int:
-        return int(int(a) / int(b))
+@register.simple_tag
+def division(a, b, **args):
+    a, b = int(a), int(b)
+    if "to_int" in args:
+        return int(a / b)
     else:
-        return float(a) / float(b)
+        return a / b

@@ -19,7 +19,7 @@ from django.urls import path
 from core.views import index, topic_details
 
 urlpatterns = [
-    path('index/', index),
+    path('index/', index, name='index'),
     path('topic_details/<int:pk>/', topic_details, name="topic_details"),
     path('admin/', admin.site.urls),
 ]

@@ -16,13 +16,13 @@ REVIEW_SCHEMA_GOODS = {
     'properties': {
         'title': {
             'type': 'string',
-            'minlength': 1,
-            'maxlength': 64,
+            'minLength': 1,
+            'maxLength': 64,
         },
         'description': {
             'type': 'string',
-            'minlength': 1,
-            'maxlength': 1024,
+            'minLength': 1,
+            'maxLength': 1024
         },
         'price': {
             'type': 'integer',
@@ -40,8 +40,8 @@ REVIEW_SCHEMA_REVIEW = {
     'properties': {
         'text': {
             'type': 'string',
-            'minlength': 1,
-            'maxlength': 1024,
+            'minLength': 1,
+            'maxLength': 1024,
         },
         'grade': {
             'type': 'integer',
@@ -80,6 +80,7 @@ class PostReviewView(View):
         try:
             data = json.loads(request.body)
             validate(data, REVIEW_SCHEMA_REVIEW)
+
             item = Item.objects.get(pk=item_id)
             post = Review(item=item, grade=data['grade'], text=data['text'])
             post.save()
